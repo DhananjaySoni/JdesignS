@@ -1,0 +1,32 @@
+{
+  "name": "jdesigns",
+  "version": "0.0.1",
+  "description": "SVG based visual framework",
+  "main": "src/scripts/jdes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhananjaySoni/JdesignS.git"
+  },
+  "keywords": [
+    "SVG",
+    "Canvas",
+    "Javascript",
+    "Web",
+    "drawings",
+    "designs",
+    "draw"
+  ],
+  "author": "Priyam, Dhanajay, Vinayak, #0K",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DhananjaySoni/JdesignS/issues"
+  },
+  "homepage": "https://github.com/DhananjaySoni/JdesignS#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "svg.js": "^2.7.1"
+  }
+}
