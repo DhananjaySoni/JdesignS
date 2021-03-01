@@ -4,8 +4,9 @@ import {JDEMatrix} from '../math/JDEMatrix.js';
 
 
 export default class JDEGraphic extends EventDispatcher{
-    constructor(style){
+    constructor(parent, style){
         super();
+        this.__parent = (parent instanceof JDEGraphic)? parent : null;
         this.__position = new JDEVector(0, 0);
         this.__scale = new JDEVector(1, 1);
         this.__rotation = 0.0;        
