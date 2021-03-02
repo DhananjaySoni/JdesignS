@@ -1,15 +1,15 @@
 export default class JDEMatrix{
     constructor(){
-    this.a = 1;
-	this.b = 0;
-	this.c = 0;
-	this.d = 0;
-	this.e = 1;
-	this.f = 0;
-       this.h = 0;
-       this.i = 0;
-       this.j = 1;
-          this.matrix = [
+    this.__a = 1;
+	this.__b = 0;
+	this.__c = 0;
+	this.__d = 0;
+	this.__e = 1;
+	this.__f = 0;
+       this.__h = 0;
+       this.__i = 0;
+       this.__j = 1;
+          this.__matrix = [
         [1, 0, 0],
         [0, 1, 0],
         [0, 0, 1]
@@ -31,7 +31,7 @@ export default class JDEMatrix{
       return this;
     }
  function reset() {
-	this.a = 1;
+	this.__a = 1;
 	this.b = 0;
 	this.c = 0;
 	this.d = 0;
