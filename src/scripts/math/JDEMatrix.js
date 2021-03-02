@@ -59,7 +59,7 @@ function rotate(angle) {
      function rotateDeg(angle) {
 		this.rotate(angle * 0.017453292519943295);
 		return this;
-	},
+	}
    
     
      JDEMatrix.vectorDotProduct = (a, b) => {
@@ -112,8 +112,8 @@ skewX: function(sx) {
 	}
 
 skewY: function(sy) {
-		this.transform(1, sy, 0, 0, 1,0 0, 0,1);
-		eturn this;
+		this.transform(1, sy, 0, 0, 1,0 ,0, 0,1);
+		return this;
 	},
 
 
