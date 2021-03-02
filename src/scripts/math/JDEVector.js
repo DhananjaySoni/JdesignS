@@ -6,7 +6,6 @@ export default class JDEVector {
     /**
      * Implement all the vector functions
     //  */
-<<<<<<< HEAD
     dot(vector) {
         let x2 = vector.x();
         let y2 = vector.y();
@@ -21,22 +20,6 @@ export default class JDEVector {
         let x2 = vector.x();
         let y2 = vector.y();
         return (Math.sqrt((Math.pow(this.__x - x2), 2) + (Math.pow(this.__x - x2), 2)));
-=======
-    dot(vector){
-        let x2 = vector.x();
-        let y2= vector.y();
-        return (this.__x*x2 + this.__y*y2);
-    }
-    cross(vector){
-        let x2 = vector.x();
-        let y2= vector.y();
-        return(this.__x*y2 - this.__y*x2);
-    }
-    dist(vector){
-        let x2 = vector.x();
-        let y2= vector.y();
-        return(Math.sqrt((Math.pow(this.__x - x2),2)+(Math.pow(this.__x - x2),2)));
->>>>>>> 0fd9308b7346457cba33c836e3fa22f257940ad6
     }
 
     get x() {
@@ -57,7 +40,6 @@ export default class JDEVector {
 
     get length() {
         //Implement length of a vector (return number)
-<<<<<<< HEAD
         return (Math.sqrt(Math.pow(this.__x), 2) + (Math.pow(this.__y), 2));
     }
 
@@ -94,9 +76,6 @@ export default class JDEVector {
         this.__y *= vector.y;
         var newVector = new JDEVector(this.__x, this.__y);
         return newVector;
-=======
-        return (Math.sqrt(Math.pow(this.__x),2)+(Math.pow(this.__y),2));
->>>>>>> 0fd9308b7346457cba33c836e3fa22f257940ad6
     }
 
     divide(vector) {
