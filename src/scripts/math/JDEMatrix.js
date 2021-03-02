@@ -10,9 +10,9 @@ export default class JDEMatrix{
     this.__i = 0;
     this.__j = 1;
     this.__matrix = [
-        [1, 0, 0],
-        [0, 1, 0],
-        [0, 0, 1]
+        [this.__a, this.__b,this.c],
+        [this.__d,this.__e,this.__f],
+        [this.__g,this.__h,this.__i]
     ];
      const rows = this.__matrix.length;
      const columns = this.__matrix[0].length;
