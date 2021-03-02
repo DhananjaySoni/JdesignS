@@ -6,9 +6,9 @@ export default class JDEMatrix{
 	this.d = 0;
 	this.e = 1;
 	this.f = 0;
-    this.h = 0;
-    this.i = 0;
-    this.j = 1;
+       this.h = 0;
+       this.i = 0;
+       this.j = 1;
           this.matrix = [
         [1, 0, 0],
         [0, 1, 0],
@@ -37,22 +37,22 @@ export default class JDEMatrix{
 	this.d = 0;
 	this.e = 1;
 	this.f = 0;
-    this.h = 0;
-    this.i = 0;
-    this.j = 1;
+        this.h = 0;
+        this.i = 0;
+        this.j = 1;
 		return this;
 	}
 function getrow(r) {
      
       return this.matrix[r - 1].slice(0);
     }
-    function setvalue(r, c, v) {
+      function setvalue(r, c, v) {
       this.matrix[r-1][c-1] = v;
       return this;
     }
 function rotate(angle) {
 		var cos = Math.cos(angle),
-			sin = Math.sin(angle);
+	        var sin = Math.sin(angle);
 		this.transform(cos, -sin, 0,sin, cos, 0, 0,0,1);
 		return this;
 	} /** angle in radians**/
@@ -113,7 +113,7 @@ skewX: function(sx) {
 
 skewY: function(sy) {
 		this.transform(1, sy, 0, 0, 1,0 0, 0,1);
-		eturn this;
+		return this;
 	},
 
 
