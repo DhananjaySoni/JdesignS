@@ -6,9 +6,9 @@ export default class JDEMatrix{
     this.__d = 0;
     this.__e = 1;
     this.__f = 0;
+    this.__g = 0;
     this.__h = 0;
-    this.__i = 0;
-    this.__j = 1;
+    this.__i = 1;
     this.__matrix = [
         [this.__a, this.__b,this.c],
         [this.__d,this.__e,this.__f],
@@ -41,9 +41,9 @@ export default class JDEMatrix{
 	this.__d = 0;
 	this.__e = 1;
 	this.__f = 0;
+        this.__g = 0;
         this.__h = 0;
-        this.__i = 0;
-        this.__j = 1;
+        this.__i = 1;
      return this;
 	}
  
