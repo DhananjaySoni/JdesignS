@@ -1,6 +1,6 @@
 export default class JDEMatrix{
     constructor(){
-        var  this.matrix = [
+          this.matrix = [
         [1, 0, 0],
         [0, 1, 0],
         [0, 0, 1]
@@ -10,7 +10,7 @@ export default class JDEMatrix{
     }
     
   function  transpose( matA ) {
-      const this.matrix = Array(this.columns).fill(0);
+      this.matrix = Array(this.columns).fill(0);
       this.matrix = mat.map((r, i) => this.getColumn(i + 1));
       return this;
     }
