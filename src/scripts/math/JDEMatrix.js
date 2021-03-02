@@ -31,7 +31,7 @@ export default class JDEMatrix{
       return this;
     }
  function reset() {
-	this.__a = 1;
+	this.a = 1;
 	this.b = 0;
 	this.c = 0;
 	this.d = 0;
