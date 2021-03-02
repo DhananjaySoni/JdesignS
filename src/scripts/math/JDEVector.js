@@ -5,7 +5,22 @@ export default class JDEVector{
     }
     /**
      * Implement all the vector functions
-     */
+    //  */
+    dot(vector){
+        let x2 = vector.x();
+        let y2= vector.y();
+        return (this.__x*x2 + this.__y*y2);
+    }
+    cross(vector){
+        let x2 = vector.x();
+        let y2= vector.y();
+        return(this.__x*y2 - this.__y*x2);
+    }
+    dist(vector){
+        let x2 = vector.x();
+        let y2= vector.y();
+        return(Math.sqrt((Math.pow(this.__x - x2),2)+(Math.pow(this.__x - x2),2)));
+    }
 
     get x(){
         return this.__x;
@@ -25,5 +40,6 @@ export default class JDEVector{
 
     get length(){
         //Implement length of a vector (return number)
+        return (Math.sqrt(Math.pow(this.__x),2)+(Math.pow(this.__y),2));
     }
 }
