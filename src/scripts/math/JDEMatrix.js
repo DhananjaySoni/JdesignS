@@ -17,15 +17,18 @@ export default class JDEMatrix{
      const rows = this.__matrix.length;
      const columns = this.__matrix[0].length;
     }
-    flipX() {
+	
+ flipX() {
 		this.transform(-1, 0, 0, 0, 1 ,0 ,0 ,0 ,1);
 		return this;
 	}
-     flipY() {
+	
+ flipY() {
 		this.transform(1, 0, 0, 0, -1, 0,0,0,1);
 		return this;
 	}
-  function  transpose( matA ) {
+	
+ transpose( matA ) {
       this.__matrix = Array(this.columns).fill(0);
       this.__matrix = mat.map((r, i) => this.getColumn(i + 1));
       return this;
@@ -51,6 +54,7 @@ getrow(r) {
       this.__matrix[r-1][c-1] = v;
       return this;
     }
+	
 	/** angle in radians**/
  rotate(angle) {
 		var cos = Math.cos(angle),
@@ -59,6 +63,7 @@ getrow(r) {
 		return this;
 	}
 /** angle in degree**/
+	
  rotateDeg(angle) {
 	this.rotate(angle * 0.017453292519943295);
 	return this;
@@ -69,6 +74,7 @@ JDEMatrix.vectorDotProduct = (a, b) => {
 if (a.length !== b.length) throw new Error(`length of 'a' not equal length of 'b'`)
     return a.map((x, i) => x * b[i]).reduce((a, b) => a + b);
   }
+
 translate(tx, ty) {
 		this.transform(1, 0, 0, 0, 1, 0, tx, ty,1);
 		return this;
@@ -121,8 +127,6 @@ skewY(sy) {
 
 
 
-    
-       
     }
 
    
