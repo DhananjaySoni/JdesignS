@@ -7,21 +7,28 @@ export default class JDEVector {
      * Implement all the vector functions
     //  */
     dot(vector) {
-        let x2 = vector.x();
-        let y2 = vector.y();
-        return (this.__x * x2 + this.__y * y2);
+        let x2 = vector.x;
+        let y2 = vector.y;
+        return ((this.__x * x2) + (this.__y * y2));
     }
     cross(vector) {
-        let x2 = vector.x();
-        let y2 = vector.y();
-        return (this.__x * y2 - this.__y * x2);
+        let x2 = vector.x;
+        let y2 = vector.y;
+        this.__x=((this.__x)*(x2)*(Math.sin(radians_to_degrees(0.5))));
+        this.__y=((this.__y)*(y2)*(Math.sin(radians_to_degrees(0.5))));
+        let newVector = new JDEVector(this.__x,this.__y);
+        return newVector;
     }
     dist(vector) {
-        let x2 = vector.x();
-        let y2 = vector.y();
+        let x2 = vector.x;
+        let y2 = vector.y;
         return (Math.sqrt((Math.pow(this.__x - x2), 2) + (Math.pow(this.__x - x2), 2)));
     }
-
+    radians_to_degrees(radians)
+    {
+        let pi = Math.PI;
+        return (radians * (180/pi));
+    }
     get x() {
         return this.__x;
     }
@@ -44,37 +51,37 @@ export default class JDEVector {
     }
 
     get clone() {
-        var vector = new JDEVector(this.__x, this.__y);
+        let vector = new JDEVector(this.__x, this.__y);
         return vector;
     }
 
     toString(vector) {
-        var string = `x=${vector.x}, y=${vector.y}`;
+        let string = `x=${vector.x}, y=${vector.y}`;
         return string;
     }
 
     add(vector) {
-        var x2 = vector.x;
-        var y2 = vector.y;
+        let x2 = vector.x;
+        let y2 = vector.y;
         this.__x += x2;
         this.__y += y2;
-        var newVector = new JDEVector(this.__x, this.__y);
+        let newVector = new JDEVector(this.__x, this.__y);
         return newVector;
     }
 
     subtract(vector) {
-        var x2 = vector.x;
-        var y2 = vector.y;
+        let x2 = vector.x;
+        let y2 = vector.y;
         this.__x -= x2;
         this.__y -= y2;
-        var newVector = new JDEVector(this.__x, this.__y);
+        let newVector = new JDEVector(this.__x, this.__y);
         return newVector;
     }
 
     multiply(vector) {
         this.__x *= vector.x;
         this.__y *= vector.y;
-        var newVector = new JDEVector(this.__x, this.__y);
+        let newVector = new JDEVector(this.__x, this.__y);
         return newVector;
     }
 
@@ -82,7 +89,7 @@ export default class JDEVector {
         if (vector.x != 0 && vector.y != 0) {
             this.__x /= vector.x;
             this.__y /= vector.y;
-            var newVector = new JDEVector(this.__x, this.__y);
+            let newVector = new JDEVector(this.__x, this.__y);
             return newVector;
         }
     }
@@ -101,15 +108,13 @@ export default class JDEVector {
     }
 
     rotateDeg(angle) {
-        var pi = Math.PI;
-        var theta = angle * (pi / 180);
-        var cs = Math.cos(theta);
-        var sn = Math.sin(theta);
+        let pi = Math.PI;
+        let theta = angle * (pi / 180);
+        let cs = Math.cos(theta);
+        let sn = Math.sin(theta);
         px = this.__x * cs - this.__y * sn;
         py = this.__x * sn + this.__y * cs;
         this.__x = px;
         this.__y = py;
     }
 }
-
-
