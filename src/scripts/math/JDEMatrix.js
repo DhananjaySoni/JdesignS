@@ -19,7 +19,7 @@ export default class JDEMatrix{
     }
 	
  flipX() {
-		this.transform(-1, 0, 0, 0, 1 ,0 ,0 ,0 ,1);
+		this.transform(-1, 0, 0, 0, 1 ,0 ,0 ,0 ,1)
 		return this;
 	}
 	
@@ -50,7 +50,7 @@ export default class JDEMatrix{
 getrow(r) {
      return this.__matrix[r - 1].slice(0);
     }
-      function setvalue(r, c, v) {
+      setvalue(r, c, v) {
       this.__matrix[r-1][c-1] = v;
       return this;
     }
@@ -70,8 +70,9 @@ getrow(r) {
 	}
    
     
-JDEMatrix.vectorDotProduct = (a, b) => {
-if (a.length !== b.length) throw new Error(`length of 'a' not equal length of 'b'`)
+ JDEMatrix.vectorDotProduct = (a, b) => {
+if (a.length !== b.length) throw
+  new Error(`length of 'a' not equal length of 'b'`)
     return a.map((x, i) => x * b[i]).reduce((a, b) => a + b);
   }
 
@@ -121,7 +122,7 @@ skewX(sx) {
 	}
 
 skewY(sy) {
-		this.transform(1, sy, 0, 0, 1,0 0, 0,1);
+		this.transform(1, sy, 0, 0, 1,0 ,0, 0,1);
 		return this;
 	}
 
