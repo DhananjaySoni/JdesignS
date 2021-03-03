@@ -17,6 +17,7 @@ export default class JDEVector {
         this.__x=((this.__x)*(x2)*(Math.sin(radians_to_degrees(0.5))));
         this.__y=((this.__y)*(y2)*(Math.sin(radians_to_degrees(0.5))));
         let newVector = new JDEVector(this.__x,this.__y);
+        return newVector;
     }
     dist(vector) {
         let x2 = vector.x;
