@@ -111,6 +111,13 @@ export default class JDEVector {
         return this;
     }
 
+    // Subtract a scalar value to current vector
+    subtractScalar(value){
+        this.__x += value;
+        this.__y += value;
+        return this;
+    }
+
     // divide current vector by given vector
     divide(vector) {
         if (vector.length() != 0) {
@@ -118,6 +125,16 @@ export default class JDEVector {
             let j = this.__y / vector.y;
             let newVector = new JDEVector(i,j);
             return newVector;
+        }
+        else return this;
+    }
+
+    // divide a scalar value to current vector
+    divide(value) {
+        if (value != 0) {
+            this.__x /= value;
+            this.__y /= value;
+            return this;
         }
         else return this;
     }
