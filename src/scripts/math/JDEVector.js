@@ -158,7 +158,7 @@ export default class JDEVector {
             let newVector = new JDEVector(i, j);
             return newVector;
         }
-        else return this;
+        else { return this; }
     }
 
     // divide a scalar value to current vector
@@ -168,7 +168,7 @@ export default class JDEVector {
             this.__y /= value;
             return this;
         }
-        else return this;
+        else { return this; }
     }
 
     // Invert x and y coordinates of current vector
@@ -225,10 +225,9 @@ export default class JDEVector {
     /* 
     * Check if the vectors are equal
     * Returns a boolean */
-    equals(vector) {
-        if (this.__x == vector.x && this.__y == vector.y)
-            return true;
-        else return false;
+    equals(vector, epsilon = Number.EPSILON) {
+        if ((Math.abs(vector.x - this.__x) < epsilon) && (Math.abs(vector.y - this.__y) < epsilon)) { return true; }
+        else { return false; }
     }
 
     // Floor the x and y coordinates of the vector
