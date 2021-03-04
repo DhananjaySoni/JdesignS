@@ -162,7 +162,7 @@ export default class JDEVector {
     }
 
     // divide a scalar value to current vector
-    divide(value) {
+    divideScalar(value) {
         if (value != 0) {
             this.__x /= value;
             this.__y /= value;
