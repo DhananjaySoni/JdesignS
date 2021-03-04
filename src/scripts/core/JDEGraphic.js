@@ -18,6 +18,7 @@ export default class JDEGraphic extends EventDispatcher{
     __updateGraphic(){
         this.__updateMatrix();
     }
+    
 
     /**
      * Implement getter/setter methods for 
