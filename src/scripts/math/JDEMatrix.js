@@ -70,10 +70,12 @@ getrow(r) {
 	}
    
     
- JDEMatrix.vectorDotProduct = (a, b) => {
-if (a.length !== b.length) throw
+ JDEMatrixvectorDotProduct = (a, b) => {
+if (a.length !== b.length)
+{ throw
   new Error(`length of 'a' not equal length of 'b'`)
     return a.map((x, i) => x * b[i]).reduce((a, b) => a + b);
+}
   }
 
 translate(tx, ty) {
