@@ -24,7 +24,7 @@ export default class JDEVector {
         this.__y = value;
     }
 
-    set(x,y){
+    set(x, y) {
         this.__x = x;
         this.__y = y;
         return this;
@@ -58,12 +58,12 @@ export default class JDEVector {
         let y2 = vector.y;
         return (Math.sqrt((Math.pow(this.__x - x2), 2) + (Math.pow(this.__y - y2), 2)));
     }
-    
+
     /*
     * get squarred distance between vectors
     * Use it when only comparison between distances is needed
     * Faster than distance method*/
-    squarredDistance(vector){
+    squarredDistance(vector) {
         let x2 = vector.x;
         let y2 = vector.y;
         return ((Math.pow(this.__x - x2), 2) + (Math.pow(this.__y - y2), 2));
@@ -94,25 +94,25 @@ export default class JDEVector {
         this.__y += y2;
         return this;
     }
-	
-	//Adds another vector's X component to itself.
-	addX(vector){
-		let x2 = vector.x;
-		this.__x += x2;
-		 let vector = new JDEVector(this.__x, this.__y);
-		 return vector;
-	}
-	
-	//Adds another vector's Y component to itself.
-	addY(vector){
-		let y2 = vector.y;
-		this.__y += y2;
-		let vector = new JDEVector(this.__x, this.__y);
-		return vector;
-	}
-	
+
+    //Adds another vector's X component to itself.
+    addX(vector) {
+        let x2 = vector.x;
+        this.__x += x2;
+        let vector = new JDEVector(this.__x, this.__y);
+        return vector;
+    }
+
+    //Adds another vector's Y component to itself.
+    addY(vector) {
+        let y2 = vector.y;
+        this.__y += y2;
+        let vector = new JDEVector(this.__x, this.__y);
+        return vector;
+    }
+
     // Add a scalar value to current vector
-    addScalar(value){
+    addScalar(value) {
         this.__x += value;
         this.__y += value;
         return this;
@@ -127,8 +127,24 @@ export default class JDEVector {
         return this;
     }
 
+    //Subtracts another vector's X component to itself.
+    subtractX(vector) {
+        let x2 = vector.x;
+        this.__x -= x2;
+        let vector = new JDEVector(this.__x, this.__y);
+        return vector;
+    }
+
+    //Subtracts another vector's Y component to itself.
+    subtractY(vector) {
+        let y2 = vector.y;
+        this.__y -= y2;
+        let vector = new JDEVector(this.__x, this.__y);
+        return vector;
+    }
+
     // Subtract a scalar value to current vector
-    subtractScalar(value){
+    subtractScalar(value) {
         this.__x -= value;
         this.__y -= value;
         return this;
@@ -139,7 +155,7 @@ export default class JDEVector {
         if (vector.length() != 0) {
             let i = this.__x / vector.x;
             let j = this.__y / vector.y;
-            let newVector = new JDEVector(i,j);
+            let newVector = new JDEVector(i, j);
             return newVector;
         }
         else return this;
@@ -182,21 +198,21 @@ export default class JDEVector {
     }
 
     // Convert x and y coordinates to whole numbers
-    unFloat(){
+    unFloat() {
         this.__x = Math.round(this.__x);
         this.__y = Math.round(this.__y);
         return this;
     }
 
     // Get x and y coordinates into an array
-    toArray(){
-        let arr =[];
+    toArray() {
+        let arr = [];
         arr.push(this.__x, this.__y);
         return arr;
     }
 
     // Get x and y coordinates into an object
-    toObject(){
+    toObject() {
         let obj = {};
         obj = {
             x: this.__x,
@@ -209,28 +225,28 @@ export default class JDEVector {
     /* 
     * Check if the vectors are equal
     * Returns a boolean */
-    equals(vector){
-        if(this.__x == vector.x && this.__y == vector.y)
-        return true;
+    equals(vector) {
+        if (this.__x == vector.x && this.__y == vector.y)
+            return true;
         else return false;
     }
 
     // Floor the x and y coordinates of the vector
-    floor(){
+    floor() {
         this.__x = Math.floor(this.__x);
         this.__y = Math.floor(this.__y);
         return this;
     }
 
     // Ceil the x and y coordinates of the vector
-    ceil(){
+    ceil() {
         this.__x = Math.ceil(this.__x);
         this.__y = Math.ceil(this.__y);
         return this;
     }
 
     // Get normalized vector
-    normalize(){
+    normalize() {
         let len = this.length();
         this.__x /= len;
         this.__y /= len;
@@ -238,7 +254,7 @@ export default class JDEVector {
     }
 
     // Set random x and y values for the vector
-    random(){
+    random() {
         this.__x = (Math.random() * 1);
         this.__y = (Math.random() * 1);
         return this;
