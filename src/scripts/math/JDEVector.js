@@ -196,7 +196,22 @@ export default class JDEVector {
         this.__y = vector.y;
         return this;
     }
-
+	
+	//Copies the X component of another vector in to itself.
+	    copyX(vector) {
+			let x2 = vector.x;
+			this.__x = x2;
+			let vector = new JDEVector(this.__x, this.__y);
+			return vector;
+    }
+		//Copies the Y component of another vector in to itself.
+	    copyY(vector) {
+			let y2 = vector.y;
+			this.__Y= y2;
+			let vector = new JDEVector(this.__x, this.__y);
+			return vector;
+    }
+	
     // Convert x and y coordinates to whole numbers
     unFloat() {
         this.__x = Math.round(this.__x);
