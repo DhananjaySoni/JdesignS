@@ -94,7 +94,23 @@ export default class JDEVector {
         this.__y += y2;
         return this;
     }
-
+	
+	//Adds another vector's X component to itself.
+	addX(vector){
+		let x2 = vector.x;
+		this.__x += x2;
+		 let vector = new JDEVector(this.__x, this.__y);
+		 return vector;
+	}
+	
+	//Adds another vector's Y component to itself.
+	addY(vector){
+		let y2 = vector.y;
+		this.__y += y2;
+		let vector = new JDEVector(this.__x, this.__y);
+		return vector;
+	}
+	
     // Add a scalar value to current vector
     addScalar(value){
         this.__x += value;
@@ -113,8 +129,8 @@ export default class JDEVector {
 
     // Subtract a scalar value to current vector
     subtractScalar(value){
-        this.__x += value;
-        this.__y += value;
+        this.__x -= value;
+        this.__y -= value;
         return this;
     }
 
