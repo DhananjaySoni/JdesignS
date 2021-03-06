@@ -18,7 +18,6 @@ export default class JDEGraphic extends EventDispatcher{
     __updateGraphic(){
         this.__updateMatrix();
     }
-<<<<<<< HEAD
 
     //To draw a rectangle
 	rectangle(object,x,y){
@@ -48,7 +47,7 @@ export default class JDEGraphic extends EventDispatcher{
         return object.stroke({ color: value1, opacity: value2, width: value3 });
     }
 
-    //opacity 
+    //To give opacity 
     opacity(object,value){
         return object.opacity(value);
     }
@@ -100,7 +99,6 @@ export default class JDEGraphic extends EventDispatcher{
     clone(object){
         return object.clone();
     }
-=======
     
     scaleX(sx) {
 		
@@ -123,11 +121,6 @@ export default class JDEGraphic extends EventDispatcher{
         this.__scale.y = value;
 
     }
-    
-
-	
-
->>>>>>> 9e91de15d38a3fa135337829b2ad86197acea5ea
 
     /**
      * Implement getter/setter methods for 
