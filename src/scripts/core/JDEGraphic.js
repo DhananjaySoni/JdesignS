@@ -18,7 +18,87 @@ export default class JDEGraphic extends EventDispatcher{
     __updateGraphic(){
         this.__updateMatrix();
     }
-    
+
+    //To draw a rectangle
+	rectangle(object,x,y){
+        let object = SVG().rect(x,y);
+        return object;
+    }
+
+    //To draw a circle
+    circle(object,r){
+        let object =SVG().circle(r);
+        return object; 
+    }
+
+    //To draw a ellipse
+    ellipse(object,x,y){
+        let object=SVG().ellipse(x,y);
+        return object;
+    }
+
+    //to Fill the object with the color
+    fill(object,color){
+        return object.fill(color);
+    }
+
+    //To Stroke the object
+    stroke(object,value1,value2,value3){
+        return object.stroke({ color: value1, opacity: value2, width: value3 });
+    }
+
+    //opacity 
+    opacity(object,value){
+        return object.opacity(value);
+    }
+
+    // Method to convert Radians to degrees 
+    radians_to_degrees(radians) {
+        let pi = Math.PI;
+        return (radians * (180 / pi));
+    }
+
+    //Method To Scale The object
+    scale(object,x,y){
+        return object.scale(x,y);
+        object.__updateGraphic();
+    }
+
+	//To Rotate The object 
+	rotate(object,value){
+		return object.rotate(radians_to_degrees(value));
+        object.__updateGraphic();
+	}
+
+    //Method to Move the Object
+    move(object,x,y){
+        return object.move(x,y);
+    } 
+
+    //To Hide the Object
+    hide(object){
+        return object.hide();
+    }
+
+    //To Show the Object
+    show(object){
+        return object.show();
+    }
+
+    //To remove the Object
+    remove(object){
+        return object.remove();
+    }
+
+    //To set the size of object
+    size(object,x,y){
+        return object.size(x,y);
+    }
+
+    //Method to clone the object
+    clone(object){
+        return object.clone();
+    }
 
     /**
      * Implement getter/setter methods for 
