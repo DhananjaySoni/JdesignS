@@ -18,6 +18,7 @@ export default class JDEGraphic extends EventDispatcher{
     __updateGraphic(){
         this.__updateMatrix();
     }
+<<<<<<< HEAD
 
     //To draw a rectangle
 	rectangle(object,x,y){
@@ -99,6 +100,34 @@ export default class JDEGraphic extends EventDispatcher{
     clone(object){
         return object.clone();
     }
+=======
+    
+    scaleX(sx) {
+		
+		return this.__scale;
+	}
+
+    setsx(value)
+    { 
+        this.__scale.x = value;
+
+    }
+     
+    scaleY(sy) {
+		
+		return this.__scale;
+	}
+
+    setsy(value)
+    { 
+        this.__scale.y = value;
+
+    }
+    
+
+	
+
+>>>>>>> 9e91de15d38a3fa135337829b2ad86197acea5ea
 
     /**
      * Implement getter/setter methods for 

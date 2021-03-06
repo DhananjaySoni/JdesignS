@@ -77,7 +77,7 @@ export default class JDEMatrix {
 	}
 	/** angle in degree**/
 	clone() {
-		return new Matrix(this.__matrix);
+		return new JDEMatrix(this.__matrix);
 	}
 	
 
