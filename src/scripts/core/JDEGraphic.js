@@ -99,28 +99,6 @@ export default class JDEGraphic extends EventDispatcher{
     clone(object){
         return object.clone();
     }
-    
-    scaleX(sx) {
-		
-		return this.__scale;
-	}
-
-    setsx(value)
-    { 
-        this.__scale.x = value;
-
-    }
-     
-    scaleY(sy) {
-		
-		return this.__scale;
-	}
-
-    setsy(value)
-    { 
-        this.__scale.y = value;
-
-    }
 
     /**
      * Implement getter/setter methods for 
