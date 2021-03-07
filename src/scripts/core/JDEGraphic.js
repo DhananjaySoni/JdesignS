@@ -19,21 +19,39 @@ export default class JDEGraphic extends EventDispatcher{
         this.__updateMatrix();
     }
 
+    //To draw a line
+    line(object,x1,y1,x2,y2){
+        object=SVG().line(x1,y1,x2,y2);
+        return object;
+    }
+
     //To draw a rectangle
 	rectangle(object,x,y){
-        let object = SVG().rect(x,y);
+         object = SVG().rect(x,y);
         return object;
     }
 
     //To draw a circle
     circle(object,r){
-        let object =SVG().circle(r);
+         object =SVG().circle(r);
         return object; 
     }
 
     //To draw a ellipse
     ellipse(object,x,y){
-        let object=SVG().ellipse(x,y);
+         object=SVG().ellipse(x,y);
+        return object;
+    }
+
+    //to draw a polyline
+    polyline(object,...inputs){
+        object=SVG().polyline(inputs);
+        return object;
+    }
+    
+     //to draw a polygon
+     polygon(object,...inputs){
+        object=SVG().polygon(inputs);
         return object;
     }
 
