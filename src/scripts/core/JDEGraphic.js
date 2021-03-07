@@ -26,20 +26,20 @@ export default class JDEGraphic extends EventDispatcher{
     }
 
     //To draw a rectangle
-	rectangle(object,x,y){
-         object = SVG().rect(x,y);
+	rectangle(object,width,height){
+         object = SVG().rect(width,height);
         return object;
     }
 
     //To draw a circle
-    circle(object,r){
-         object =SVG().circle(r);
+    circle(object,radius){
+         object =SVG().circle(radius);
         return object; 
     }
 
     //To draw a ellipse
-    ellipse(object,x,y){
-         object=SVG().ellipse(x,y);
+    ellipse(object,radiusx,radiusy){
+         object=SVG().ellipse(radiusx,radiusy);
         return object;
     }
 
@@ -55,60 +55,67 @@ export default class JDEGraphic extends EventDispatcher{
         return object;
     }
 
-    //to Fill the object with the color
+    //Method to fill the object with the color
     fill(object,color){
         return object.fill(color);
     }
 
-    //To Stroke the object
+    //Method to stroke the object
     stroke(object,value1,value2,value3){
         return object.stroke({ color: value1, opacity: value2, width: value3 });
     }
 
-    //To give opacity 
+    //Method to give opacity to the object
     opacity(object,value){
         return object.opacity(value);
     }
 
-    // Method to convert Radians to degrees 
+    //Method to convert Radians to degrees 
     radians_to_degrees(radians) {
         let pi = Math.PI;
         return (radians * (180 / pi));
     }
 
-    //Method To Scale The object
+    //Method to scale the object
     scale(object,x,y){
         return object.scale(x,y);
         object.__updateGraphic();
     }
 
-	//To Rotate The object 
+	/** 
+    *Method to rotate the object 
+    *according to the center of the object
+    **/
 	rotate(object,value){
 		return object.rotate(radians_to_degrees(value));
         object.__updateGraphic();
 	}
 
-    //Method to Move the Object
+    /** 
+    *Method to move the object 
+    *by its upper left corner 
+    *to a given x and y position
+    **/
     move(object,x,y){
         return object.move(x,y);
     } 
 
-    //To Hide the Object
+    //Method to hide the object
     hide(object){
         return object.hide();
     }
 
-    //To Show the Object
+    //Method to show the object
     show(object){
         return object.show();
     }
 
-    //To remove the Object
+    //Method to remove the object
     remove(object){
         return object.remove();
     }
 
-    //To set the size of object
+    //Method to set the size of object
     size(object,x,y){
         return object.size(x,y);
     }
