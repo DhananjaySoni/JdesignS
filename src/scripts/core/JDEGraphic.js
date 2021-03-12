@@ -75,11 +75,11 @@ export class JDEGraphic extends EventDispatcher{
             /**
              * Clear all things related to current parent
              */
-            this.__parent.__svgelement.remove(this.__svgelement);
+            this.__parent.__container.remove(this.__svgelement);
         }
         if(p !== null){
             this.__parent = p;
-            this.__parent.__svgelement.add(this.__svgelement);
+            this.__parent.__container.add(this.__svgelement);
         }        
     }
 
