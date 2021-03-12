@@ -1,4 +1,4 @@
-export default class JDEMatrix {
+export class JDEMatrix {
 	constructor() {
 		this.__a = 1;
 		this.__b = 0;
@@ -70,9 +70,9 @@ export default class JDEMatrix {
 
 	/** angle in radians**/
 	rotate(angle) {
-		var cos = Math.cos(angle),
-		var sin = Math.sin(angle);
-		this.transform(this.__a*cos,this.b__*(-sin), this.__c, this.__d*(sin), this.__e*(cos),this.__f, this.__g, this.__h, this.__i);
+		let cosine = Math.cos(angle);
+		let sine = Math.sin(angle);
+		this.transform(this.__a*cosine,this.b__*(-sine), this.__c, this.__d*(sine), this.__e*(cosine),this.__f, this.__g, this.__h, this.__i);
 		return this;
 	}
 	/** angle in degree**/
@@ -86,13 +86,9 @@ export default class JDEMatrix {
 		return this;
 	}
 
-	
-
-
 	vectorDotProduct = (a, b) => {
 		if (a.length !== b.length) {
-			throw
-			new Error(`length of 'a' not equal length of 'b'`)
+			throw new Error(`length of 'a' not equal length of 'b'`);
 			return a.map((x, i) => x * b[i]).reduce((a, b) => a + b);
 		}
 	}
@@ -101,8 +97,6 @@ export default class JDEMatrix {
 		this.transform(this.__a, this.__b, this.__c, this.__d, -this.__e, this.__f, this.__g+ (tx), this.__h + (ty), this.__i);
 		return this;
 	}
-
-
 
 	translateX(tx) {
 		this.transform(this.__a, this.__b, this.__c, this.__d, -this.__e, this.__f, this.__g+ (tx), this.__h , this.__i);

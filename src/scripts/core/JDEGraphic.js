@@ -1,129 +1,54 @@
+import {SVG} from '@svgdotjs/svg.js';
+
+
+import {Utils} from '../extras/utils.js';
 import {EventDispatcher} from './EventDispatcher.js';
+
 import {JDEVector} from '../math/JDEVector.js';
 import {JDEMatrix} from '../math/JDEMatrix.js';
 
+import {LineAttributes} from '../attributes/LineAttributes';
 
-export default class JDEGraphic extends EventDispatcher{
+export class JDEGraphic extends EventDispatcher{
+
     constructor(parent, style){
         super();
+
+        this.__name = Utils.uid();
         this.__parent = (parent instanceof JDEGraphic)? parent : null;
         this.__position = new JDEVector(0, 0);
         this.__scale = new JDEVector(1, 1);
         this.__rotation = 0.0;        
+        this.__matrix = new JDEMatrix();
+
+
+        this.__svgelement = SVG(`<g id="graphic-${this.__name}"></g>`);
+        this.__container = SVG(`<g id="container-${this.__name}"></g>`);
+        this.__graphic = SVG(`<g id="painter-${this.__name}"></g>`);
+
+        this.__lineAttributes = new LineAttributes();
+
+        this.__svgelement.add(this.__container);
+        this.__svgelement.add(this.__graphic);
     }
 
     __updateMatrix(){
-
+        /**
+         * Updated matrix based on translation (position), rotation and scale
+         */
     }
 
-    __updateGraphic(){
-        this.__updateMatrix();
+    clear(){
+        this.__graphic.clear();
     }
 
-    //To draw a line
-    line(object,x1,y1,x2,y2){
-        object=SVG().line(x1,y1,x2,y2);
-        return object;
+    remove(child){
+        child.parent = null;
     }
 
-    //To draw a rectangle
-	rectangle(object,width,height){
-         object = SVG().rect(width,height);
-        return object;
-    }
 
-    //To draw a circle
-    circle(object,radius){
-         object =SVG().circle(radius);
-        return object; 
-    }
-
-    //To draw a ellipse
-    ellipse(object,radiusx,radiusy){
-         object=SVG().ellipse(radiusx,radiusy);
-        return object;
-    }
-
-    //to draw a polyline
-    polyline(object,...inputs){
-        object=SVG().polyline(inputs);
-        return object;
-    }
-    
-     //to draw a polygon
-     polygon(object,...inputs){
-        object=SVG().polygon(inputs);
-        return object;
-    }
-
-    //Method to fill the object with the color
-    fill(object,color){
-        return object.fill(color);
-    }
-
-    //Method to stroke the object
-    stroke(object,value1,value2,value3){
-        return object.stroke({ color: value1, opacity: value2, width: value3 });
-    }
-
-    //Method to give opacity to the object
-    opacity(object,value){
-        return object.opacity(value);
-    }
-
-    //Method to convert Radians to degrees 
-    radians_to_degrees(radians) {
-        let pi = Math.PI;
-        return (radians * (180 / pi));
-    }
-
-    //Method to scale the object
-    scale(object,x,y){
-        return object.scale(x,y);
-        object.__updateGraphic();
-    }
-
-	/** 
-    *Method to rotate the object 
-    *according to the center of the object
-    **/
-	rotate(object,value){
-		return object.rotate(radians_to_degrees(value));
-        object.__updateGraphic();
-	}
-
-    /** 
-    *Method to move the object 
-    *by its upper left corner 
-    *to a given x and y position
-    **/
-    move(object,x,y){
-        return object.move(x,y);
-    } 
-
-    //Method to hide the object
-    hide(object){
-        return object.hide();
-    }
-
-    //Method to show the object
-    show(object){
-        return object.show();
-    }
-
-    //Method to remove the object
-    remove(object){
-        return object.remove();
-    }
-
-    //Method to set the size of object
-    size(object,x,y){
-        return object.size(x,y);
-    }
-
-    //Method to clone the object
-    clone(object){
-        return object.clone();
+    add(child){
+        child.parent = this;        
     }
 
     /**
@@ -134,6 +59,33 @@ export default class JDEGraphic extends EventDispatcher{
      * Any setter method that impacts the visual nature of a graphic 
      * deserves a call to __updateGraphic();
     **/
+
+    get parent(){
+        return this.__parent;
+    }
+
+    set parent(p){
+        if(!p instanceof JDEGraphic && p !== null){
+            throw new TypeError('Expected an instance of JDEGraphic');
+        }
+        if(p === this){
+            throw new EvalError("Ha haa, very funny! How can I be a parent of myself? Maybe you watched predestiny movie too many times");
+        }
+        if(this.__parent){
+            /**
+             * Clear all things related to current parent
+             */
+            this.__parent.__svgelement.remove(this.__svgelement);
+        }
+        if(p !== null){
+            this.__parent = p;
+            this.__parent.__svgelement.add(this.__svgelement);
+        }        
+    }
+
+    get graphic(){
+        return this.__graphic;
+    }
 
     get x(){
         return this.__position.x;
@@ -149,5 +101,21 @@ export default class JDEGraphic extends EventDispatcher{
 
     set y(value){
         this.__position.y = value;
+    }
+
+    get scale(){
+        return this.__scale;
+    }
+
+    set scale(scl){
+        this.__scale = scl.clone();
+    }
+
+    get rotation(){
+        return this.__rotation;
+    }
+
+    set rotation(value){
+        this.__rotation = value;
     }
 }

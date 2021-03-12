@@ -1,4 +1,4 @@
-export default class JDEVector {
+export class JDEVector {
     constructor(x, y) {
         this.__x = (x) ? x : 0.0;
         this.__y = (y) ? y : 0.0;
@@ -94,23 +94,7 @@ export default class JDEVector {
         this.__y += y2;
         return this;
     }
-
-    //Adds another vector's X component to itself.
-    addX(vector) {
-        let x2 = vector.x;
-        this.__x += x2;
-        let vector = new JDEVector(this.__x, this.__y);
-        return vector;
-    }
-
-    //Adds another vector's Y component to itself.
-    addY(vector) {
-        let y2 = vector.y;
-        this.__y += y2;
-        let vector = new JDEVector(this.__x, this.__y);
-        return vector;
-    }
-
+    
     // Add a scalar value to current vector
     addScalar(value) {
         this.__x += value;
@@ -125,22 +109,6 @@ export default class JDEVector {
         this.__x -= x2;
         this.__y -= y2;
         return this;
-    }
-
-    //Subtracts another vector's X component to itself.
-    subtractX(vector) {
-        let x2 = vector.x;
-        this.__x -= x2;
-        let vector = new JDEVector(this.__x, this.__y);
-        return vector;
-    }
-
-    //Subtracts another vector's Y component to itself.
-    subtractY(vector) {
-        let y2 = vector.y;
-        this.__y -= y2;
-        let vector = new JDEVector(this.__x, this.__y);
-        return vector;
     }
 
     // Subtract a scalar value to current vector
@@ -195,21 +163,6 @@ export default class JDEVector {
         this.__x = vector.x;
         this.__y = vector.y;
         return this;
-    }
-
-    //Copies the X component of another vector in to itself.
-    copyX(vector) {
-        let x2 = vector.x;
-        this.__x = x2;
-        let vector = new JDEVector(this.__x, this.__y);
-        return vector;
-    }
-    //Copies the Y component of another vector in to itself.
-    copyY(vector) {
-        let y2 = vector.y;
-        this.__Y = y2;
-        let vector = new JDEVector(this.__x, this.__y);
-        return vector;
     }
 
     // Convert x and y coordinates to whole numbers

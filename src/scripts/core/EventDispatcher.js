@@ -1,6 +1,6 @@
-export default class EventDispatcher {
+export class EventDispatcher {
     constructor() {
-        this._listeners = null;
+        // this._listeners = null;
     }
 
     addEventListener(type, listener) {

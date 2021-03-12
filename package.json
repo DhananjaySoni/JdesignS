@@ -2,9 +2,9 @@
   "name": "jdesigns",
   "version": "0.0.1",
   "description": "SVG based visual framework",
-  "main": "src/scripts/jdes.js",
+  "main": "src/scripts/core/JDEApplication.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "basic": "parcel src/demos/basic/index.html -d bin/demo/basic/"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,9 @@
   },
   "homepage": "https://github.com/DhananjaySoni/JdesignS#readme",
   "dependencies": {
+    "@svgdotjs/svg.js": "^3.0.16",
+    "line-intersect": "^3.0.0",
     "parcel-bundler": "^1.12.4",
-    "svg.js": "^2.7.1"
+    "three": "^0.126.1"
   }
 }
