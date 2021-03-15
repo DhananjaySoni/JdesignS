@@ -40,8 +40,8 @@ export class JDEGraphic extends EventDispatcher {
         return this.__graphic.stroke({color:value,opacity:alpha,width:width});
     }
 
-    fillstyle(value, alpha = 0) {
-        return this.__graphic.fill(value, alpha);
+    fillstyle(value, alpha = 1) {
+        return this.__graphic.fill({color:value,opacity: alpha});
     }
 
     moveto(x, y) {
