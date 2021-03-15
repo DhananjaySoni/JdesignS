@@ -86,12 +86,12 @@ export class JDEMatrix {
 		return this;
 	}
 
-	vectorDotProduct = (a, b) => {
+	/*vectorDotProduct = (a, b) => {
 		if (a.length !== b.length) {
 			throw new Error(`length of 'a' not equal length of 'b'`);
-			return a.map((x, i) => x * b[i]).reduce((a, b) => a + b);
+			return  a.map((x, i) => x * b[i]).reduce((a, b) => a + b);
 		}
-	}
+	}*/
 
 	translate(tx, ty) {
 		this.transform(this.__a, this.__b, this.__c, this.__d, -this.__e, this.__f, this.__g+ (tx), this.__h + (ty), this.__i);
