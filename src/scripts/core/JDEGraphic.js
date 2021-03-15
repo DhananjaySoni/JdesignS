@@ -47,7 +47,7 @@ export class JDEGraphic extends EventDispatcher {
     moveto(x, y) {
         this.__position.x = x;
         this.__position.y = y;
-       // this.JDEVector=(x,y);
+       
         
         return this.__graphic.move(x, y);
     }
@@ -76,10 +76,18 @@ export class JDEGraphic extends EventDispatcher {
         return this.__graphic.polygon(inputs).fill('#f06').fillstyle("#0f6");
     }
 
-    /*scale(x) {
-        return this.__graphic.scale(x);
+    line(x1,y1,x2,y2)
+    {
+        return this.__graphic.line(x1,y1,x2,y2).stroke('#000');
+    }
 
-    }*/
+    skew(x,y)
+    {
+        return this.__graphic.skew(x,y);
+    }
+
+
+  
 
     circle(radius) {
         return this.__graphic.circle(radius);
@@ -136,8 +144,15 @@ export class JDEGraphic extends EventDispatcher {
     add(child) {
         child.parent = this;
     }
+     addtext(w)
+     {
+        return  this.__graphic.text(w);
 
-    /**
+     }
+
+   
+
+ /*
      * Implement getter/setter methods for 
      * position
      * scale
@@ -168,7 +183,7 @@ export class JDEGraphic extends EventDispatcher {
             this.__parent.__svgelement.add(this.__svgelement);
         }
     }
-
+   // group = this.__parent.group();
     get graphic() {
         return this.__graphic;
     }
@@ -189,13 +204,13 @@ export class JDEGraphic extends EventDispatcher {
         this.__position.y = value;
     }
 
-    get scale() {
+    /*get scale() {
         return this.__scale;
     }
 
     set scale(scl) {
         this.__scale = scl.clone();
-    }
+    }*/
 
     get rotation() {
         return this.__rotation;
@@ -205,3 +220,4 @@ export class JDEGraphic extends EventDispatcher {
         this.__rotation = value;
     }
 }
+
