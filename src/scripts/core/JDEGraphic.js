@@ -33,7 +33,7 @@ export class JDEGraphic extends EventDispatcher {
     return this.__position;
   }
 
-  lineStyle(value, alpha = 1, width) {
+  lineStyle(value, alpha = 1, width=1) {
     return this.__graphic.stroke({
       color: value,
       opacity: alpha,
