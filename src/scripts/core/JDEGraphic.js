@@ -46,11 +46,11 @@ export class JDEGraphic extends EventDispatcher {
 
     moveto(x, y) {
         this.__position.x = x;
-        this.__position.y = y;
-       
-        
+        this.__position.y = y;        
         return this.__graphic.move(x, y);
     }
+
+
     size(x, y) {
         return this.__graphic.size(x, y);
     }
@@ -60,8 +60,10 @@ export class JDEGraphic extends EventDispatcher {
     movecenter(cx = 0, cy = 0) {
         return this.__graphic.center(cx, cy);
     }
-    rectangle(x, y) {
-        return this.__graphic.rect(x, y);
+    rectangle(x, y, w, h) {
+        let tempRectangle = this.__graphic.rect(w, h);
+        tempRectangle.move(x, y);
+        return tempRectangle;
     }
 
     roundedRectangle(w,h,rx,ry){
