@@ -12,7 +12,9 @@ function clearGraphic(){
 
 
 document.getElementById('clearG').onclick=clearGraphic;
-child.polygon(0,0,100,50 ,50,100);
+child.rectangle(50,50);
+
+
 app.add(child);
 
 
