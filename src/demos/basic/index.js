@@ -16,3 +16,4 @@ document.getElementById('clearG').onclick=clearGraphic;
 child.graphic.rect(50, 50);
 
 app.add(child);
+

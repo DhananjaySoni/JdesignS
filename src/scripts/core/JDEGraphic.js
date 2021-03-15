@@ -36,15 +36,14 @@ export class JDEGraphic extends EventDispatcher {
         return console.log(this.__position);
     }
 
-    linestyle(value, alpha) {
-        return this.__graphic.stroke(value);
+    linestyle(value, alpha=1, width) {
+        return this.__graphic.stroke({color:value,opacity:alpha,width:width});
     }
-    
 
     fillstyle(value, alpha = 0) {
         return this.__graphic.fill(value, alpha);
-
     }
+
     moveto(x, y) {
         this.__position.x = x;
         this.__position.y = y;
@@ -63,14 +62,24 @@ export class JDEGraphic extends EventDispatcher {
     }
     rectangle(x, y) {
         return this.__graphic.rect(x, y);
-
-
     }
+
+    roundedRectangle(w,h,rx,ry){
+        return this.__graphic.rect(w,h).radius(rx,ry);
+    }
+
+    polyline(...inputs){    
+        return this.__graphic.polyline(inputs).fill('none').stroke('#000');
+    }
+
+    polygon(...inputs){
+        return this.__graphic.polygon(inputs);
+    }
+
     /*scale(x) {
         return this.__graphic.scale(x);
 
     }*/
-
 
     circle(radius) {
         return this.__graphic.circle(radius);
@@ -79,6 +88,19 @@ export class JDEGraphic extends EventDispatcher {
     line(x1, y1, x2, y2) {
         return this.__graphic.line(x1, y1, x2, y2);
     }
+
+    ellipse(x,y){
+        return this.__graphic.ellipse(x, y);
+    }
+
+    hide(){
+        return this.__graphic.hide();
+    }
+
+    show(){
+        return this.__graphic.show();
+    }
+    
     width(x) {
         return this.__graphic.width(x);
     }
@@ -93,7 +115,6 @@ export class JDEGraphic extends EventDispatcher {
     rotate(value)
     { 
         return this.__graphic.rotate(value);
-
     }
    
     __updateMatrix() {
