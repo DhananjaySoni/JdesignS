@@ -3,6 +3,10 @@ import { Math as THREEMath } from 'three';
 import { checkIntersection } from 'line-intersect';
 
 export class Utils {
+
+    static toDegrees(radians){
+        return (radians * 180) / Math.PI;
+    }
     /** Creates a Guide.
      * @returns A new Guide.
      */
