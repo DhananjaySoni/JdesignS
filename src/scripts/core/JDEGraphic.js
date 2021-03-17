@@ -33,7 +33,7 @@ export class JDEGraphic extends EventDispatcher {
     return this.__position;
   }
 
-  lineStyle(value, alpha = 1, width=1) {
+  lineStyle(value, alpha = 1, width) {
     return this.__graphic.stroke({
       color: value,
       opacity: alpha,
@@ -59,10 +59,10 @@ export class JDEGraphic extends EventDispatcher {
   }
   attribute(fill = null, border = null, x = 0, y = 0, cx = 0, cy = 0) {
     return this.__graphic.attr(
-      this.fillstyle(fill),
-      this.linestyle(border),
-      this.moveto(x, y),
-      this.movecenter(cx, cy)
+      this.fillStyle(fill),
+      this.lineStyle(border),
+      this.moveTo(x, y),
+      this.moveCenter(cx, cy)
     );
   }
   moveCenter(cx = 0, cy = 0) {
