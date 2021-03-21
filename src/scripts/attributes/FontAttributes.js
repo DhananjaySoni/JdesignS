@@ -3,7 +3,7 @@ export class FontAttributes{
         this.__textColor='#f06';
         this.__font='Arial';
         this.__size=16;
-        this.__lineHeight=1;
+        this.__letterSpace=0;
         this.__anchor='start';
         this.__fontWeight='normal';
         this.__fontStyle='normal';
@@ -15,7 +15,7 @@ export class FontAttributes{
     }
 
     set textColor(tcolor){
-        this.___textColor= tcolor;
+        this.__textColor= tcolor;
     }
 
     get font(){
@@ -32,14 +32,6 @@ export class FontAttributes{
 
     set size(fontSize){
         this.__size = fontSize;
-    }
-
-    get lineHeight(){
-        return this.__lineHeight;
-    }
-
-    set lineHeight(lHeight){
-        this.__lineHeight = lHeight;
     }
 
     get anchor(){
@@ -81,5 +73,12 @@ export class FontAttributes{
     set fontStretch(fstretch){
         this.__fontStretch = fstretch;
     }
-   
+
+    get letterSpace(){
+        return this.__letterSpace;
+    }
+
+    set letterSpace(lspace){
+        this.__letterSpace = lspace;
+    }
 }

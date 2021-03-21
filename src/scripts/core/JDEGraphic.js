@@ -57,6 +57,18 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
+    textStyle(color,font,size,letterSpace,anchor,weight,style,variant,stretch){
+        this.__fontAttributes.textColor=color;
+        this.__fontAttributes.font=font;
+        this.__fontAttributes.size=size;
+        this.__fontAttributes.letterSpace=letterSpace;
+        this.__fontAttributes.anchor=anchor;
+        this.__fontAttributes.fontWeight=weight;
+        this.__fontAttributes.fontStyle=style;
+        this.__fontAttributes.fontVariant=variant;
+        this.__fontAttributes.fontStretch=stretch;
+    }
+
     moveTo(x, y) {
         let path = this.__graphic.path();
         path.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
@@ -123,17 +135,17 @@ export class JDEGraphic extends EventDispatcher {
     drawText(x, y, textString) {
         let text = this.__graphic.text(textString);
         text.move(x, y);
-        text.font({ 
+        text.font({
             family:   this.__fontAttributes.font,
             size:     this.__fontAttributes.size,
-            leading:  this.__fontAttributes.lineHeight,
             fill:     this.__fontAttributes.textColor,
             anchor:   this.__fontAttributes.anchor,
             weight:   this.__fontAttributes.__fontWeight,
             style:    this.__fontAttributes.fontStyle,
             variant:  this.__fontAttributes.fontVariant,
-            stretch:  this.__fontAttributes.fontStretch
-});
+            stretch:  this.__fontAttributes.fontStretch,
+        });
+        text.attr({'letter-spacing':this.__fontAttributes.letterSpace});
         return this;
     }    
 
