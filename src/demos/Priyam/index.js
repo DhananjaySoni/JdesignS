@@ -1,4 +1,3 @@
-import { IcosahedronBufferGeometry } from 'three';
 import {JDEApplication} from '../../scripts/core/JDEApplication.js';
 import {JDEGraphic} from '../../scripts/core/JDEGraphic.js';
 import { JDEVector } from '../../scripts/math/JDEVector.js';
