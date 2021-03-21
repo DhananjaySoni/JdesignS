@@ -7,6 +7,7 @@ import { JDEVector } from "../math/JDEVector.js";
 import { JDEMatrix } from "../math/JDEMatrix.js";
 
 import { DrawingAttributes } from "../attributes/DrawingAttributes";
+import { FontAttributes } from "../attributes/FontAttributes";
 
 export class JDEGraphic extends EventDispatcher {
     constructor(parent, style) {
@@ -26,6 +27,7 @@ export class JDEGraphic extends EventDispatcher {
         this.__graphic = SVG(`<g id="painter-${this.__name}"></g>`);
 
         this.__drawingAttributes = new DrawingAttributes();
+        this.__fontAttributes = new FontAttributes();
         this.__lines = [];
 
         this.__svgelement.add(this.__container);
@@ -78,6 +80,9 @@ export class JDEGraphic extends EventDispatcher {
     rectangle(x, y, w, h) {
         let tempRectangle = this.__graphic.rect(w, h);
         tempRectangle.move(x, y);
+        tempRectangle.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        tempRectangle.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
+
         return this;
     }
 
@@ -118,6 +123,17 @@ export class JDEGraphic extends EventDispatcher {
     drawText(x, y, textString) {
         let text = this.__graphic.text(textString);
         text.move(x, y);
+        text.font({ 
+            family:   this.__fontAttributes.font,
+            size:     this.__fontAttributes.size,
+            leading:  this.__fontAttributes.lineHeight,
+            fill:     this.__fontAttributes.textColor,
+            anchor:   this.__fontAttributes.anchor,
+            weight:   this.__fontAttributes.__fontWeight,
+            style:    this.__fontAttributes.fontStyle,
+            variant:  this.__fontAttributes.fontVariant,
+            stretch:  this.__fontAttributes.fontStretch
+});
         return this;
     }    
 
