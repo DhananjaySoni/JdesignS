@@ -4,7 +4,10 @@
   "description": "SVG based visual framework",
   "main": "src/scripts/core/JDEApplication.js",
   "scripts": {
-    "basic": "parcel src/demos/basic/index.html -d bin/demo/basic/"
+    "basic": "parcel src/demos/basic/index.html -d bin/demo/basic/",
+    "dhanan": "parcel src/demos/Dhanan/index.html -d bin/demo/Dhanan/",
+    "priyam": "parcel src/demos/Priyam/index.html -d bin/demo/Priyam/",
+    "vinayak": "parcel src/demos/Vinayak/index.html -d bin/demo/Vinayak/"
   },
   "repository": {
     "type": "git",

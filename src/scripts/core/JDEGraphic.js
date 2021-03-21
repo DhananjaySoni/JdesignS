@@ -83,18 +83,26 @@ export class JDEGraphic extends EventDispatcher {
 
     circle(x, y, radius) {
         let circle = this.__graphic.circle(radius);
+
+        circle.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        circle.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
+
         circle.move(x, y);
         return this;
     }
 
     ellipse(x, y, r1, r2) {
         let ellipse = this.__graphic.ellipse(r1, r2);
+        ellipse.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        ellipse.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
         ellipse.move(x, y);
         return this;
     }
 
     roundedRectangle(x, y, w, h, rx, ry) {
         let roundRectangle = this.graphic.rect(w, h);
+        roundRectangle.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        roundRectangle.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});        
         roundRectangle.radius(rx, ry);
         roundRectangle.move(x, y);
         return this;
@@ -102,8 +110,8 @@ export class JDEGraphic extends EventDispatcher {
 
     polygon(...listOfCoordinates) {
         let polygon = this.__graphic.polygon(listOfCoordinates);
-        polygon.fill("#f06");
-        polygon.stroke("#0f6");
+        polygon.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        polygon.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});        
         return this;
     }
 
