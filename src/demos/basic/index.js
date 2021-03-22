@@ -30,6 +30,42 @@ console.log(...inputs);
 
 }
 
+<<<<<<< HEAD
 hello('m20 d34',50,new Date);
+=======
+let app = new JDEApplication();
+let child = new JDEGraphic();
+let c = new JDEGraphic();
+
+
+c.lineStyle('#FF0000', 1.0, 5);
+c.fillStyle('#0000FF', 0.1);
+c.moveTo(0, 0);
+c.lineTo(150, 0);
+c.lineTo(150, 150);
+c.lineTo(0, 150);
+c.lineTo(0, 0);
+
+c.lineStyle('#00FF00', 1.0, 5);
+c.fillStyle('#FF0000', 0.1);
+c.circle(75, 75, 50);
+
+child.x = 150;
+child.y = 150;
+// child.scale = new JDEVector(2, 1);
+
+app.add(child);
+child.add(c);
+
+
+
+document.getElementById('clearG').onclick=clearGraphic;
+
+
+
+
+
+
+>>>>>>> 5331de6e4612c4890c711cbcd147b52723c74e76
 
 
