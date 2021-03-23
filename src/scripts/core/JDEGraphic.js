@@ -56,6 +56,18 @@ export class JDEGraphic extends EventDispatcher {
         this.__drawingAttributes.fillAlpha = alpha;
         return this;
     }
+        fontAttribute(color,size,font,letterspace,anchor,weight,style,variant,stretch){
+        this.__fontAttributes.textColor=color;
+        this.__fontAttributes.size=size;
+        this.__fontAttributes.font=font;
+        this.__fontAttributes.letterSpace=letterSpace;
+        this.__fontAttributes.anchor=anchor;
+        this.__fontAttributes.fontWeight=weight;
+        this.__fontAttributes.fontStyle=style;
+        this.__fontAttributes.fontVariant=variant;
+        this.__fontAttributes.fontStretch=stretch;
+        return this;
+    }
     
     textColor(color){
         this.__fontAttributes.textColor=color;
