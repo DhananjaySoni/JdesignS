@@ -41,7 +41,7 @@ export class JDEGraphic extends EventDispatcher {
         let translate = `translate(${this.x}, ${this.y})`;
         let rotate = `rotate(${Utils.toDegrees(this.rotation)})`;
         let scale = `scale(${this.scale.x}, ${this.scale.y})`;
-        this.__svgelement.attr({transform: `${translate},${rotate},${scale}`});
+        this.__svgelement.attr({ transform: `${translate},${rotate},${scale}` });
     }
 
     lineStyle(color, alpha = 1, width) {
@@ -56,78 +56,83 @@ export class JDEGraphic extends EventDispatcher {
         this.__drawingAttributes.fillAlpha = alpha;
         return this;
     }
-        fontAttribute(color,size,font,letterspace,anchor,weight,style,variant,stretch){
-        this.__fontAttributes.textColor=color;
-        this.__fontAttributes.size=size;
-        this.__fontAttributes.font=font;
-        this.__fontAttributes.letterSpace=letterSpace;
-        this.__fontAttributes.anchor=anchor;
-        this.__fontAttributes.fontWeight=weight;
-        this.__fontAttributes.fontStyle=style;
-        this.__fontAttributes.fontVariant=variant;
-        this.__fontAttributes.fontStretch=stretch;
-        return this;
-    }
-    
-    textColor(color){
-        this.__fontAttributes.textColor=color;
+    fontAttribute(color, size, font, letterSpace, anchor, weight, style, variant, stretch) {
+        this.__fontAttributes.textColor = color;
+        this.__fontAttributes.size = size;
+        this.__fontAttributes.font = font;
+        this.__fontAttributes.letterSpace = letterSpace;
+        this.__fontAttributes.anchor = anchor;
+        this.__fontAttributes.fontWeight = weight;
+        this.__fontAttributes.fontStyle = style;
+        this.__fontAttributes.fontVariant = variant;
+        this.__fontAttributes.fontStretch = stretch;
         return this;
     }
 
-    fontSize(size){
-        this.__fontAttributes.size=size;   
+    textColor(color) {
+        this.__fontAttributes.textColor = color;
         return this;
     }
 
-    fontFamily(font){
-        this.__fontAttributes.font=font;
+    fontSize(size) {
+        this.__fontAttributes.size = size;
         return this;
     }
 
-    fontLetterSpace(letterSpace){
-        this.__fontAttributes.letterSpace=letterSpace;
-        return this;    
-    }
-    
-    fontAnchor(anchor){
-        this.__fontAttributes.anchor=anchor;
+    fontFamily(font) {
+        this.__fontAttributes.font = font;
         return this;
     }
 
-    fontWeight(weight){
-        this.__fontAttributes.fontWeight=weight;
+    fontLetterSpace(letterSpace) {
+        this.__fontAttributes.letterSpace = letterSpace;
         return this;
     }
 
-    fontStyle(style){
-        this.__fontAttributes.fontStyle=style;
+    fontLeading(leadValue){
+        this.__fontAttributes.leading=leadValue;
         return this;
     }
 
-    fontVariant(variant){
-        this.__fontAttributes.fontVariant=variant;
+    fontAnchor(anchor) {
+        this.__fontAttributes.anchor = anchor;
         return this;
     }
 
-    fontStretch(stretch){
-        this.__fontAttributes.fontStretch=stretch;
+    fontWeight(weight) {
+        this.__fontAttributes.fontWeight = weight;
+        return this;
+    }
+
+    fontStyle(style) {
+        this.__fontAttributes.fontStyle = style;
+        return this;
+    }
+
+    fontVariant(variant) {
+        this.__fontAttributes.fontVariant = variant;
+        return this;
+    }
+
+    fontStretch(stretch) {
+        this.__fontAttributes.fontStretch = stretch;
         return this;
     }
 
     moveTo(x, y) {
         let path = this.__graphic.path();
-        path.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
-        path.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
+        path.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        path.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         path.plot(['M', x, y]);
         this.__lines.push(path);
         return this;
     }
 
     lineTo(x, y) {
-        if(!this.__lines.length){
+        if (!this.__lines.length) {
             return this;
         }
-        let path = this.__lines[0];        
+        let path = this.__lines[0];
         let pathPoints = path.array();
         pathPoints.push(['L', x, y]);
         path.plot(pathPoints);
@@ -137,34 +142,31 @@ export class JDEGraphic extends EventDispatcher {
     rectangle(x, y, w, h) {
         let tempRectangle = this.__graphic.rect(w, h);
         tempRectangle.move(x, y);
-        tempRectangle.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
-        tempRectangle.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
-
+        tempRectangle.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        tempRectangle.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         return this;
     }
 
     circle(x, y, radius) {
         let circle = this.__graphic.circle(radius);
-
-        circle.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
-        circle.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
-
+        circle.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        circle.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         circle.move(x, y);
         return this;
     }
 
     ellipse(x, y, r1, r2) {
         let ellipse = this.__graphic.ellipse(r1, r2);
-        ellipse.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
-        ellipse.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
+        ellipse.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        ellipse.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         ellipse.move(x, y);
         return this;
     }
 
     roundedRectangle(x, y, w, h, rx, ry) {
         let roundRectangle = this.graphic.rect(w, h);
-        roundRectangle.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
-        roundRectangle.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});        
+        roundRectangle.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        roundRectangle.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         roundRectangle.radius(rx, ry);
         roundRectangle.move(x, y);
         return this;
@@ -172,8 +174,8 @@ export class JDEGraphic extends EventDispatcher {
 
     polygon(...listOfCoordinates) {
         let polygon = this.__graphic.polygon(listOfCoordinates);
-        polygon.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
-        polygon.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});        
+        polygon.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        polygon.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         return this;
     }
 
@@ -181,18 +183,20 @@ export class JDEGraphic extends EventDispatcher {
         let text = this.__graphic.text(textString);
         text.move(x, y);
         text.font({
-            family:   this.__fontAttributes.font,
-            size:     this.__fontAttributes.size,
-            fill:     this.__fontAttributes.textColor,
-            anchor:   this.__fontAttributes.anchor,
-            weight:   this.__fontAttributes.__fontWeight,
-            style:    this.__fontAttributes.fontStyle,
-            variant:  this.__fontAttributes.fontVariant,
-            stretch:  this.__fontAttributes.fontStretch,
+            family: this.__fontAttributes.font,
+            size: this.__fontAttributes.size,
+            fill: this.__fontAttributes.textColor,
+            anchor: this.__fontAttributes.anchor,
+            weight: this.__fontAttributes.__fontWeight,
+            style: this.__fontAttributes.fontStyle,
+            variant: this.__fontAttributes.fontVariant,
+            stretch: this.__fontAttributes.fontStretch,
+            // leading: "'"+this.__fontAttributes.leading+"em'",
         });
-        text.attr({'letter-spacing':this.__fontAttributes.letterSpace});
+        text.leading(this.__fontAttributes.leading)
+        text.attr({ 'letter-spacing': this.__fontAttributes.letterSpace });
         return this;
-    }    
+    }
 
     clear() {
         this.__graphic.clear();
@@ -239,7 +243,7 @@ export class JDEGraphic extends EventDispatcher {
             this.__parent.__container.add(this.__svgelement);
         }
     }
-    
+
     get x() {
         return this.__position.x;
     }
@@ -263,7 +267,7 @@ export class JDEGraphic extends EventDispatcher {
     }
     set scale(scl) {
         this.__scale = scl.clone();
-        this.__updateMatrix();        
+        this.__updateMatrix();
     }
 
     get rotation() {
@@ -275,11 +279,11 @@ export class JDEGraphic extends EventDispatcher {
         this.__updateMatrix();
     }
 
-    get visible(){
+    get visible() {
         return this.__visible;
     }
 
-    set visible(flag){
+    set visible(flag) {
         this.__visible = flag;
         (!flag) ? this.__svgelement.hide() : this.__svgelement.show();
     }
