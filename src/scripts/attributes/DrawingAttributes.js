@@ -2,10 +2,10 @@ export class DrawingAttributes{
 
     constructor(){
         this.__thick = 5;
-        this.__color = '#FF0000';        
+        this.__color = '#000000';        
         this.__alpha = 1.0;
 
-        this.__fillColor = '#FF0000';
+        this.__fillColor = '#000000';
         this.__fillAlpha = 1.0;
     }
 

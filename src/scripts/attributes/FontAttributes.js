@@ -9,6 +9,7 @@ export class FontAttributes{
         this.__fontStyle='normal';
         this.__fontVariant='normal';
         this.__fontStretch='normal';
+        this.__leading=1;
     }
     get textColor(){
         return this.__textColor;
@@ -80,5 +81,13 @@ export class FontAttributes{
 
     set letterSpace(lspace){
         this.__letterSpace = lspace;
+    }
+
+    get leading(){
+        return this.__leading;
+    }
+
+    set leading(leadValue){
+        this.__leading = leadValue;
     }
 }

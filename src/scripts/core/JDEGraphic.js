@@ -1,4 +1,4 @@
-import { Color, SVG } from "@svgdotjs/svg.js";
+import { Color, Path, SVG } from "@svgdotjs/svg.js";
 
 import { Utils } from "../extras/utils.js";
 import { EventDispatcher } from "./EventDispatcher.js";
@@ -51,6 +51,64 @@ export class JDEGraphic extends EventDispatcher {
         
         return this;
     }
+    
+    fontAttribute(color,size,font,letterspace,anchor,weight,style,variant,stretch){
+        this.__fontAttributes.textColor=color;
+        this.__fontAttributes.size=size;
+        this.__fontAttributes.font=font;
+        this.__fontAttributes.letterSpace=letterSpace;
+        this.__fontAttributes.anchor=anchor;
+        this.__fontAttributes.fontWeight=weight;
+        this.__fontAttributes.fontStyle=style;
+        this.__fontAttributes.fontVariant=variant;
+        this.__fontAttributes.fontStretch=stretch;
+        return this;
+    }
+    
+    textColor(color){
+        this.__fontAttributes.textColor=color;
+        return this;
+    }
+
+    fontSize(size){
+        this.__fontAttributes.size=size;   
+        return this;
+    }
+
+    fontFamily(font){
+        this.__fontAttributes.font=font;
+        return this;
+    }
+
+    fontLetterSpace(letterSpace){
+        this.__fontAttributes.letterSpace=letterSpace;
+        return this;    
+    }
+    fontAnchor(anchor){
+        this.__fontAttributes.anchor=anchor;
+        return this;
+    }
+
+    fontWeight(weight){
+        this.__fontAttributes.fontWeight=weight;
+        return this;
+    }
+
+    fontStyle(style){
+        this.__fontAttributes.fontStyle=style;
+        return this;
+    }
+
+    fontVariant(variant){
+        this.__fontAttributes.fontVariant=variant;
+        return this;
+    }
+
+    fontStretch(stretch){
+        this.__fontAttributes.fontStretch=stretch;
+        return this;
+    }
+    
     stroke(color,width)
     {
         this.__graphic.stroke({color,width});
@@ -62,8 +120,7 @@ export class JDEGraphic extends EventDispatcher {
     fillStyle(color, alpha = 1) {
         this.__drawingAttributes.fillColor = color;
         this.__drawingAttributes.fillAlpha = alpha;
-        let object=this.__graphics.fill();
-        object.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        
         return this;
     }
 
@@ -78,6 +135,8 @@ export class JDEGraphic extends EventDispatcher {
         this.__fontAttributes.fontVariant=variant;
         this.__fontAttributes.fontStretch=stretch;
     }
+    
+   
 
     moveTo(x, y) {
         let path = this.__graphic.path();
@@ -87,12 +146,7 @@ export class JDEGraphic extends EventDispatcher {
         this.__lines.push(path);
         return this;
     }
-    fillColor(color)
-    {
-        this.__graphic.fill(color);
-        return this;
-    }
-
+  
 
     lineTo(x, y) {
         if(!this.__lines.length){
@@ -105,6 +159,13 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
+    path(...listOfCoordinates){
+        let path=this.__graphic.path();
+        path.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
+        path.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
+        path.plot(listOfCoordinates);
+        return this;
+    }
     rectangle(x, y, w, h) {
         let tempRectangle = this.__graphic.rect(w, h);
         tempRectangle.move(x, y);
@@ -147,8 +208,28 @@ export class JDEGraphic extends EventDispatcher {
         polygon.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});        
         return this;
     }
+    polyline(...listOfCoordinates)
+    {
+         let line = this.__graphic.polyline(listOfCoordinates);
+         line.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});    
+         line.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
 
-    drawText(x, y, textString) {
+         return this;        
+
+        
+    }
+    arcTo(x1,x2,y1,y2,x3,y3){
+        let path=this.__graphic.path();
+        path.fill({color: this._drawingAttributes.fillColor, opacity: this._drawingAttributes.fillAlpha});
+        path.stroke({color: this._drawingAttributes.color, opacity: this.drawingAttributes.alpha, width: this._drawingAttributes.thickness});
+        path.plot(['M', x1, y1,'A',x2,y2,0,0,1,x3,y3]);
+        return this;
+    }
+
+
+   
+
+    drawText( textString,x, y) {
         let text = this.__graphic.text(textString);
         text.move(x, y);
         text.font({
@@ -163,7 +244,19 @@ export class JDEGraphic extends EventDispatcher {
         });
         text.attr({'letter-spacing':this.__fontAttributes.letterSpace});
         return this;
-    }    
+    }  
+
+    textPath(textString,...listOfCoordinates)
+    {   let text = this.__graphic.text(textString);
+        //let path =this.__graphic.path();
+        // path.plot(listOfCoordinates);
+         text.fill({color: this.__fontAttributes.fillColor, opacity: this.__fontAttributes.fillAlpha});
+        // text.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
+        
+        
+        return  this.__graphic.textPath(text,path(listOfCoordinates));
+    }
+      
 
     clear() {
         this.__graphic.clear();
