@@ -36,10 +36,10 @@ let timeText = new JDEGraphic();
 let tempText = new JDEGraphic();
 
 // HEADING 
-textDemo.textColor('#005');
-textDemo.fontSize(22);
-textDemo.fontLetterSpace(5);
-textDemo.drawText(100, 30, 'Temperature in New York');
+// textDemo.textColor('#005');
+// textDemo.fontSize(22);
+// textDemo.fontLetterSpace(5);
+// textDemo.drawText(100, 30, 'Temperature in New York');
 
 // TEMPERATURE HEADING 
 tempText.textColor('#000');

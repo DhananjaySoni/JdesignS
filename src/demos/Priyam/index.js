@@ -16,7 +16,7 @@ let c = new JDEGraphic();
 // c.textStyle('#000000','Arial',16,0,'start','normal','normal','normal','extra-condensed');
 c.textColor('#085');
 c.fontSize(15);
-c.fontLeading(15);
+
 // console.log(c.leading);
 c.drawText(0,20,'Hello my Name is Priyam Agarwal');
 app.add(c);
