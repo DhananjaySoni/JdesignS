@@ -159,11 +159,11 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
-    path(...listOfCoordinates){
-        let path=this.__graphic.path();
+    path(  listOfCoordinates ){
+        let path=this.__graphic.path(listOfCoordinates);
         path.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
         path.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
-        path.plot(listOfCoordinates);
+        
         return this;
     }
     rectangle(x, y, w, h) {
@@ -202,13 +202,13 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
-    polygon(...listOfCoordinates) {
+    polygon(listOfCoordinates) {
         let polygon = this.__graphic.polygon(listOfCoordinates);
         polygon.fill({color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha});
         polygon.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});        
         return this;
     }
-    polyline(...listOfCoordinates)
+    polyline(listOfCoordinates)
     {
          let line = this.__graphic.polyline(listOfCoordinates);
          line.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});    
@@ -229,7 +229,7 @@ export class JDEGraphic extends EventDispatcher {
 
    
 
-    drawText( textString,x, y) {
+    drawText(x,y,textString) {
         let text = this.__graphic.text(textString);
         text.move(x, y);
         text.font({
