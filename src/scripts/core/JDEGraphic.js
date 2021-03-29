@@ -51,8 +51,67 @@ export class JDEGraphic extends EventDispatcher {
 
         return this;
     }
-    stroke(color, width) {
-        this.__graphic.stroke({ color, width });
+    
+    fontAttribute(color,size,font,letterSpace,anchor,weight,style,variant,stretch){
+        this.__fontAttributes.textColor=color;
+        this.__fontAttributes.size=size;
+        this.__fontAttributes.font=font;
+        this.__fontAttributes.letterSpace=letterSpace;
+        this.__fontAttributes.anchor=anchor;
+        this.__fontAttributes.fontWeight=weight;
+        this.__fontAttributes.fontStyle=style;
+        this.__fontAttributes.fontVariant=variant;
+        this.__fontAttributes.fontStretch=stretch;
+        return this;
+    }
+    
+    textColor(color){
+        this.__fontAttributes.textColor=color;
+        return this;
+    }
+
+    fontSize(size){
+        this.__fontAttributes.size=size;   
+        return this;
+    }
+
+    fontFamily(font){
+        this.__fontAttributes.font=font;
+        return this;
+    }
+
+    fontLetterSpace(letterSpace){
+        this.__fontAttributes.letterSpace=letterSpace;
+        return this;    
+    }
+    fontAnchor(anchor){
+        this.__fontAttributes.anchor=anchor;
+        return this;
+    }
+
+    fontWeight(weight){
+        this.__fontAttributes.fontWeight=weight;
+        return this;
+    }
+
+    fontStyle(style){
+        this.__fontAttributes.fontStyle=style;
+        return this;
+    }
+
+    fontVariant(variant){
+        this.__fontAttributes.fontVariant=variant;
+        return this;
+    }
+
+    fontStretch(stretch){
+        this.__fontAttributes.fontStretch=stretch;
+        return this;
+    }
+    
+    stroke(color,width)
+    {
+        this.__graphic.stroke({color,width});
         return this;
     }
 
@@ -110,7 +169,6 @@ export class JDEGraphic extends EventDispatcher {
         tempRectangle.move(x, y);
         tempRectangle.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
         tempRectangle.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
-
         return this;
     }
 
@@ -167,7 +225,7 @@ export class JDEGraphic extends EventDispatcher {
 
 
 
-    drawText(textString, x = 0, y = 0) {
+    drawText(x = 0, y = 0,textString='') {
         let text = this.__graphic.text(textString);
         text.move(x, y);
         text.font({
