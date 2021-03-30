@@ -240,15 +240,16 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
-    textPath(textString, ...listOfCoordinates) {
-        let text = this.__graphic.text(textString);
+    textPath(textString,listOfCoordinates) {
+        // let textStr = this.__graphic.text(textString);
         //let path =this.__graphic.path();
         // path.plot(listOfCoordinates);
-        text.fill({ color: this.__fontAttributes.fillColor, opacity: this.__fontAttributes.fillAlpha });
+        // text.fill({ color: this.__fontAttributes.fillColor, opacity: this.__fontAttributes.fillAlpha });
         // text.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
 
-
-        return this.__graphic.textPath(text, path(listOfCoordinates));
+        this.__graphic.textPath(textString,listOfCoordinates)
+        return this;
+        // return this.__graphic.textPath(text, path(listOfCoordinates));
     }
 
 
