@@ -152,9 +152,9 @@ for (let i = 0, j = 0; i < (data.points.length) / 2; i++, j += 2) {
 graph.y = 50;
 graph.x = 80;
 
-let textP = new JDEGraphic();
-textP.textPath('dhananjay','M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')
-app.add(textP)
+// let textP = new JDEGraphic();
+// textP.textPath('dhananjay','M 10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80')
+// app.add(textP)
 //  ADDING CHILDREN
 app.add(textDemo);
 app.add(tempText);

@@ -241,13 +241,13 @@ export class JDEGraphic extends EventDispatcher {
     }
 
     textPath(textString,listOfCoordinates) {
-        // let textStr = this.__graphic.text(textString);
+        let textStr = this.drawText(0,0,textString);
         //let path =this.__graphic.path();
         // path.plot(listOfCoordinates);
         // text.fill({ color: this.__fontAttributes.fillColor, opacity: this.__fontAttributes.fillAlpha });
         // text.stroke({color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness});
 
-        this.__graphic.textPath(textString,listOfCoordinates)
+        textStr.path(listOfCoordinates)
         return this;
         // return this.__graphic.textPath(text, path(listOfCoordinates));
     }
