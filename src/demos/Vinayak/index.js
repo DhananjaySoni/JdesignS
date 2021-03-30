@@ -105,8 +105,17 @@ let count =0;
      el.moveTo(100,100);
      el.path('M 400, 175 m 10 , 0 a 45,65 0 1,0 -10,0');
      app.add(el);
-  
-    
+
+
+   let rect=new JDEGraphic();
+   rect.fillStyle('#f06');
+   rect.rectangle( 300 ,300 ,45,50);
+   rect.__graphic.draggable().on('dragmove', e => {
+    e.preventDefault()
+    e.detail.handler.move(100, 200)
+    // events are still bound e.g. dragend will fire anyway
+  })
+    app.add(rect);
   
 
 
