@@ -138,7 +138,7 @@ export class JDEGraphic extends EventDispatcher {
 
     moveTo(x, y) {
         let path = this.__graphic.path();
-        path.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
+        // path.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
         path.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         path.plot(['M', x, y]);
         this.__lines.push(path);
@@ -150,7 +150,7 @@ export class JDEGraphic extends EventDispatcher {
         if (!this.__lines.length) {
             return this;
         }
-        let path = this.__lines[0];
+        let path = this.__lines[this.__lines.length-1];
         let pathPoints = path.array();
         pathPoints.push(['L', x, y]);
         path.plot(pathPoints);
