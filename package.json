@@ -5,6 +5,7 @@
   "main": "src/scripts/core/JDEApplication.js",
   "scripts": {
     "basic": "parcel src/demos/basic/index.html -d bin/demo/basic/",
+    "ashok": "parcel src/demos/Ashok/index.html -d bin/demo/Ashok/",
     "dhanan": "parcel src/demos/Dhanan/index.html -d bin/demo/Dhanan/",
     "priyam": "parcel src/demos/Priyam/index.html -d bin/demo/Priyam/",
     "vinayak": "parcel src/demos/Vinayak/index.html -d bin/demo/Vinayak/"
