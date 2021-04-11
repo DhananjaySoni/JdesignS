@@ -44,7 +44,7 @@ let axisMarkers = new JDEGraphic();
 let grid = new JDEGraphic();
 
 
-drawGrid(grid, 30, 30, 300, 300, 5, 5, '#939393', 2.0);
+drawGrid(grid, 30, 30, 300, 300, 10, 10, '#939', 2.0);
 
 graph.add(grid);
 graph.add(axisMarkers);
