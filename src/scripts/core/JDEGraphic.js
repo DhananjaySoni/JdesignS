@@ -19,6 +19,8 @@ export class JDEGraphic extends EventDispatcher {
         this.__scale = new JDEVector(1, 1);
         this.__rotation = 0.0;
         this.__matrix = new JDEMatrix();
+        this.__worldtransform = new JDEVector(0,0);
+        this.__localtransform = new JDEVector(0, 0);
 
         this.__visible = true;
 
@@ -162,8 +164,8 @@ export class JDEGraphic extends EventDispatcher {
 
     rectangle(x, y, w, h) {
         let tempRectangle = this.__graphic.rect(w, h);
-        this.x=x;
-        this.y=y;
+        // this.x=x;
+        // this.y=y;
         this.__matrix.translate(this.x,this.y);
         tempRectangle.move(x, y);
         tempRectangle.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
@@ -175,8 +177,8 @@ export class JDEGraphic extends EventDispatcher {
         let circle = this.__graphic.circle(radius);
         circle.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
         circle.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
-        this.x=x;
-        this.y=y;
+        // this.x=x;
+        // this.y=y;
         this.__matrix.translate(this.x,this.y);
         circle.move(x, y);
         return this;
@@ -187,8 +189,8 @@ export class JDEGraphic extends EventDispatcher {
         ellipse.fill({ color: this.__drawingAttributes.fillColor, opacity: this.__drawingAttributes.fillAlpha });
         ellipse.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         ellipse.move(x, y);
-        this.x=x;
-        this.y=y;
+        // this.x=x;
+        // this.y=y;
         this.__matrix.translate(this.x,this.y);
         return this;
     }
@@ -199,8 +201,8 @@ export class JDEGraphic extends EventDispatcher {
         roundRectangle.stroke({ color: this.__drawingAttributes.color, opacity: this.__drawingAttributes.alpha, width: this.__drawingAttributes.thickness });
         roundRectangle.radius(rx, ry);
         roundRectangle.move(x, y);
-        this.x=x;
-        this.y=y;
+        // this.x=x;
+        // this.y=y;
         this.__matrix.translate(this.x,this.y);
         return this;
     }
@@ -249,10 +251,24 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
+     getLocalcoordinates(referenceobject)
+     {      this.getGlobalCoordinates()
+        referenceobject.getGlobalCoordinates()
+         
+         let localcoordinates =new JDEVector();
+         localcoordinates.x=  this.__worldtransform.x-referenceobject.__worldtransform.x;
+         localcoordinates.y= this.__worldtransform.y-referenceobject.__worldtransform.y;
+         console.log(localcoordinates);
+
+
+     }
+
     getGlobalCoordinates(){
         let tempMatrix = new JDEMatrix();
-        let res = this.recursiveGetCoordinates(tempMatrix);
-        console.log(res)
+        this.recursiveGetCoordinates(tempMatrix);
+        this.__worldtransform= new JDEVector(tempMatrix.tx,tempMatrix.ty);
+        return this.__worldtransform;
+         
     }
 
     recursiveGetCoordinates(tempMatrix){
@@ -357,5 +373,9 @@ export class JDEGraphic extends EventDispatcher {
     set visible(flag) {
         this.__visible = flag;
         (!flag) ? this.__svgelement.hide() : this.__svgelement.show();
+    }
+
+    get matrix(){
+        return this.__matrix;
     }
 }
