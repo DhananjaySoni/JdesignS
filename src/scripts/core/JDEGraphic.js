@@ -263,6 +263,11 @@ export class JDEGraphic extends EventDispatcher {
         return tempMatrix;
     }
 
+    getLocalCoordinates(){
+        console.log('x: '+this.x+', y: '+this.y)
+    }
+
+
 
     clear() {
         this.__graphic.clear();

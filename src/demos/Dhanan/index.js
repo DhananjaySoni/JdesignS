@@ -127,6 +127,7 @@ fig1.add(fig2);
 fig2.add(fig3);
 coordinatesApp.add(fig1);
 fig2.getGlobalCoordinates()
+fig2.getLocalCoordinates()
 
 document.getElementById('clearG').onclick = clearGraphic;
 
