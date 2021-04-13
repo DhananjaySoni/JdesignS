@@ -1,7 +1,7 @@
 export class DrawingAttributes{
 
     constructor(){
-        this.__thick = 5;
+        this.__thickness = 5;
         this.__color = '#000000';        
         this.__alpha = 1.0;
 
