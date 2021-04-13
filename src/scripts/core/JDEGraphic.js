@@ -19,6 +19,8 @@ export class JDEGraphic extends EventDispatcher {
         this.__scale = new JDEVector(1, 1);
         this.__rotation = 0.0;
         this.__matrix = new JDEMatrix();
+        this.__worldtransform = new JDEVector(0,0);
+        this.__localtransform = new JDEVector(0, 0);
 
         this.__visible = true;
 
@@ -249,10 +251,24 @@ export class JDEGraphic extends EventDispatcher {
         return this;
     }
 
+     getLocalcoordinates(referenceobject)
+     {      this.getGlobalCoordinates()
+        referenceobject.getGlobalCoordinates()
+         
+         let localcoordinates =new JDEVector();
+         localcoordinates.x=  this.__worldtransform.x-referenceobject.__worldtransform.x;
+         localcoordinates.y= this.__worldtransform.y-referenceobject.__worldtransform.y;
+         console.log(localcoordinates);
+
+
+     }
+
     getGlobalCoordinates(){
         let tempMatrix = new JDEMatrix();
-        let res = this.recursiveGetCoordinates(tempMatrix);
-        console.log(res)
+        this.recursiveGetCoordinates(tempMatrix);
+        this.__worldtransform= new JDEVector(tempMatrix.tx,tempMatrix.ty);
+        return this.__worldtransform;
+         
     }
 
     recursiveGetCoordinates(tempMatrix){
